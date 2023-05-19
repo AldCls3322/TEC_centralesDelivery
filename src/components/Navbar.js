@@ -4,62 +4,115 @@ import {NavLink as Link} from 'react-router-dom';
 
 const Navbar = ({isOpen, visibility}) => {
     console.log(visibility)
-    if (visibility) {
-        return (
-            <NavHeader>
-                <NavLink to='/'>ABOUT</NavLink>
-            </NavHeader>
-        )
-    }
+    return (
+        visibility ?
+        <Container isOpen={isOpen}>
+            <Menu>
+                <SbLink>RESTAURANTES</SbLink>
+                <SbLink>VOLUNTARIADOS</SbLink>
+                <SbLink>ABOUT</SbLink>
+                <HelpLink></HelpLink>
+            </Menu>
+            {/* <BottonWrap>
+                <Route to="/">Order Now</Route>
+            </BottonWrap> */}
+        </Container>
+        :
+        <Container isOpen={isOpen}>
+            <Menu>
+                <SbLink>RESTAURANTES</SbLink>
+                <SbLink>VOLUNTARIADOS</SbLink>
+                <SbLink>ABOUT</SbLink>
+                <HelpLink></HelpLink>
+            </Menu>
+            {/* <BottonWrap>
+                <Route to="/">Order Now</Route>
+            </BottonWrap> */}
+        </Container>
+    )
 }
 
 export default Navbar
 
-const NavHeader = styled.div`
-    /* Positioning */
-    position: -webkit-sticky; // makes the header be always atop no matter if you scroll
-    position: sticky;
-    top: 20;
+const Container = styled.aside`
+    position: fixed;
     z-index: 1;
-
-    /* Display & Box Model */
-    position: absolute;
-    z-index: 2;
+    top: 0;
+    width: 350px;
     height: 100%;
-    width: 20vw;
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-    background: rgba(0,0,0,0.5);
-    color: white;
-    font-weight: 700;
-`
 
-const NavLink = styled(Link)`
-    display: flex;
+    display: grid;
     align-items: center;
-    color: #fff;
-    font-size: 2rem;
-    text-decoration: none;
-    
-    cursor: pointer;
+
+    background: rgba(0, 0, 0, 0.8);
+
+    transition: 0.3s ease-in-out;
+    left: ${ ({isOpen}) => (isOpen ? '0': '-1000px') };
+
     @media screen and (max-width: 400px) {
-        position: absolute;
-        top: 10px;
-        left: 25px;
+        width: 100%;
     }
 `
 
-const NavIcon = styled.div`
-    position: absolute;
-    top: 0;
-    right: 0;
-    
-    display: block;
-    color: #fff;
+const Menu = styled.div`
+    display: grid;
+
+    text-align: center;
+
+    grid-template-column: 1fr;
+    grid-template-rows: repeat(3, 80px);
+
+    @media screen and (max-width: 480px){
+        grid-template-rows: repeat(3,60px);
+    }
+`
+
+const SbLink = styled(Link)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    list-style: none;
+    text-decoration: none;
+
+    transition: 0.2s ease-in-out;
     cursor: pointer;
-    p {
-        font-weight: bold;
-        transform: translate(-175%, 100%)
+
+    &:hover{
+        color: #80b918;
+        transition: 0.2s ease-in-out;
+    }
+`
+
+const HelpLink = styled.div`
+`
+
+const BottonWrap = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
+const Route = styled(Link)`
+    padding: 16px 64px;
+    border: none;
+
+    background: #007f5f;
+    color: #fff;
+
+    font-size: 16px;
+    text-decoration: none;
+
+    cursor: pointer;
+    white-space: nowrap;
+    outline: none;
+    transition: 0.2s ease-in-out;
+
+    &:hover{
+        transition: 0.2s ease-in-out;
+        background: #80b918;
+        color: #010606;
     }
 `
