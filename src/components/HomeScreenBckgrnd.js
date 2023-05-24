@@ -16,6 +16,9 @@ const BackgroundImg = styled.div`
     height: 100%;
     width: 100%;
 
+    //z-index: 1;
+
+    //overflow-y: scroll;
 
     background: url(${CentralesImg}) center center;
     background-size: cover;
