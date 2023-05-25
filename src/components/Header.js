@@ -9,7 +9,7 @@ const Header = ({navToggle, isOpen}) => {
     return (
         <Container>
             {isOpen ? <Icon onClick={navToggle} isOpen={isOpen}/> : <Icon onClick={navToggle} isOpen={isOpen}/> }
-            <SbLinkCoffeeName>                
+            <SbLinkCoffeeName to="/">                
                 Rappi Centrales
             </SbLinkCoffeeName>
 
@@ -18,32 +18,11 @@ const Header = ({navToggle, isOpen}) => {
                     <TextContainer>
                         <TextLink>Profile</TextLink>
                     </TextContainer>
-                    <TextContainer>
-                        <TextLink>MY ORDERS</TextLink>
-                    </TextContainer>
                 </SideTextGrid>
                 <SideProfileImageGrid>
                     <ProfileImage/>
                 </SideProfileImageGrid>
             </UserBox>
-
-            {/* <Options>
-                <StyledLink to="/" exact>
-                    <HomeButton>
-                        Home
-                    </HomeButton>
-                </StyledLink>
-                <StyledLink to="/menu">
-                    <MenuButton>
-                        Menu
-                    </MenuButton>
-                </StyledLink>
-                <StyledLink to="/contact">
-                    <ContactButton>
-                        Contact Us
-                    </ContactButton>
-                </StyledLink>
-            </Options> */}
         </Container>
     )
 }
@@ -61,14 +40,13 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
     height: 10vh;
 
     /* Color, Background & Text */
-    background: #24272B; /* BROWN OPTION = #3C2A20 | SMOKE BLACK = #0D0A08 | BLACK CHOCOLATE = #221E16*/
-    /background: rgb(49 49 49 / 100);
-    color: white;
-    border-bottom: 1px solid #FFFFFF; /* F2E3D0 */
+    background: ${({ theme }) => theme.color9};
+    color: ${({ theme }) => theme.body};
+    border-bottom: 1px solid ${({ theme }) => theme.body}; /* F2E3D0 */
 `
 
 const IconsGird = styled.div`
@@ -109,10 +87,8 @@ const Icon = styled(MdDensityMedium)`
         transform: translate(-175%, 100%)
     }
     &:hover{
-        // color: #0092DA;
-        // transition: 0.2s ease-in-out;
-        filter: drop-shadow(0 0 1rem white);            /* FF~35 */
-        filter: drop-shadow(0 0 0 1rem white);            /* MDN */
+        filter: drop-shadow(0 0 1rem ${({ theme }) => theme.body});            /* FF~35 */
+        filter: drop-shadow(0 0 0 1rem ${({ theme }) => theme.body});            /* MDN */
     }
 `
 
@@ -153,11 +129,13 @@ const UserBox = styled.div`
     border-radius: 1rem;
     border-style: solid;
     border-width: thin;
-    border-color: #FFFFFF;
+    border-color: ${({ theme }) => theme.body};
     display: grid;
+    align-items: center;
+    justify-content: center;
 
     /* Color, Background & Text */
-    background: #004B93;
+    background: ${({ theme }) => theme.color4};
 
     /* Animations and Other */
 `
@@ -188,7 +166,7 @@ const TextContainer = styled.div`
     justify-content: center;
 
     /* Color, Background & Text */
-    color: black;
+    color: ${({ theme }) => theme.text};
 
     /* Animations and Other */  
 `
@@ -210,7 +188,7 @@ const TextLink = styled(Link)`
     }
 
     :active, :focus {
-        color: #2196F3; /* liver chestnut = #9E7A4D ;  */
+        color: ${({ theme }) => theme.color1}; /* liver chestnut = #9E7A4D ;  */
     }
 
     :hover {
@@ -220,7 +198,7 @@ const TextLink = styled(Link)`
 
         content: "";
         cursor: pointer;
-        color: #2196F3;
+        color: ${({ theme }) => theme.color1};
         transition: .25s linear;
     }
 `
@@ -266,7 +244,7 @@ const ProfileImage = styled.div`
     }
 `
 
-const SbLinkCoffeeName = styled.div`
+const SbLinkCoffeeName = styled(Link)`
     /* Positioning */
     /position: absolute;
     left: 10px;
@@ -277,43 +255,11 @@ const SbLinkCoffeeName = styled.div`
     margin-left: 40px;
 
     /* Color, Background & Text */
-
-    /* Animations and Other */
-`
-
-const Options = styled.div`
-    /* Positioning */
-    position: absolute;
-    right: -10px;
-
-    /* Display */
-    transform: scale(0.8);
-    display: flex;
-`
-
-const styleddLink = styled(Link)`
-    /* Color, Background & Text */
     text-decoration: none;
-    color: white;
+    color: ${({ theme }) => theme.body};
 
     /* Animations and Other */
-    &:visited, &:link {
-        text-decoration: none;
-    }
-
-    :active, :focus {
-        color: #89634B; /* liver chestnut = #9E7A4D ;  */
-    }
-
-    :hover {
-        position: relative;
-        // width: 100%;
-        // background-color: #C9A469;
-
-        color: #C9A469; /* liver chestnut = #9E7A4D ;  */
-
-        content: "";
-        cursor: pointer;
-        transition: .25s linear;
+    &:hover{
+        filter: drop-shadow(0 0 1rem ${({ theme }) => theme.body});            /* FF~35 */
     }
 `

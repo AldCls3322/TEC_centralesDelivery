@@ -53,14 +53,18 @@ export default HomeTitle
 
 const Container = styled.div`
     /* Positioning */
-    z-index: 9;
+    //position: absolute;
+    z-index: 8;
 
     /* Display & Box Model | Sizing */
-    height: 100vh;
+    height: 90vh;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     /* Color, Background & Text */
-    background-color: transparent;;
+    background-color: transparent;
 
     /* Animations and Other */
 `
@@ -74,11 +78,11 @@ const Items = styled.div`
     display: flex;
     height: 100vh;
     max-height: 100%;
-    width: 650px;
+    width: 100%;
     padding: 0 2rem;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     line-height: 1;
 
     /* Color, Background & Text */
@@ -86,6 +90,8 @@ const Items = styled.div`
     text-transform: uppercase;
     font-weight: bold;
     text-align: left;
+    //background-image: linear-gradient(to right, transparent,${({ theme }) => theme.body},transparent);
+
 
     /* Animations and Other */
     filter: none;

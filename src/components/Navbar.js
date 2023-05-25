@@ -9,32 +9,30 @@ const Navbar = ({isOpen, visibility}) => {
         visibility ?
         <Container isOpen={isOpen}>
             <Menu>
+                <SbLink to="/">HOME</SbLink>
                 <SbLink>RESTAURANTES</SbLink>
+                <SbLink>MY ORDERS</SbLink>
                 <SbLink>VOLUNTARIADOS</SbLink>
                 <SbLink>ABOUT</SbLink>
-                <SbHelpLinkContainer>
+                <SbHelpLinkContainer to="/contact">
                     <IconHelp/>
                     HELP
                 </SbHelpLinkContainer>
             </Menu>
-            {/* <BottonWrap>
-                <Route to="/">Order Now</Route>
-            </BottonWrap> */}
         </Container>
         :
         <Container isOpen={isOpen}>
             <Menu>
+                <SbLink to="/">HOME</SbLink>
                 <SbLink>RESTAURANTES</SbLink>
+                <SbLink>MY ORDERS</SbLink>
                 <SbLink>VOLUNTARIADOS</SbLink>
                 <SbLink>ABOUT</SbLink>
-                <SbHelpLinkContainer>
+                <SbHelpLinkContainer to="/contact">
                     <IconHelp/>
                     HELP
                 </SbHelpLinkContainer>
             </Menu>
-            {/* <BottonWrap>
-                <Route to="/">Order Now</Route>
-            </BottonWrap> */}
         </Container>
     )
 }
@@ -73,7 +71,7 @@ const Menu = styled.div`
     display: grid;
     text-align: center;
     grid-template-column: 1fr;
-    grid-template-rows: repeat(3, 80px);
+    grid-template-rows: repeat(5, 80px);
 
     /* Color, Background & Text */
 
@@ -92,7 +90,7 @@ const SbLink = styled(Link)`
     justify-content: center;
 
     /* Color, Background & Text */
-    color: white;
+    color: ${({ theme }) => theme.body};
     font-size: 1.5rem;
     text-decoration: none;
     list-style: none;
@@ -103,10 +101,10 @@ const SbLink = styled(Link)`
     cursor: pointer;
 
     &:hover{
-        color: #0092DA;
+        color: ${({ theme }) => theme.color2};
         transition: 0.2s ease-in-out;
-        filter: drop-shadow(0 0 1rem white);            /* FF~35 */
-        filter: drop-shadow(0 0 0 1rem white);            /* MDN */
+        filter: drop-shadow(0 0 1rem ${({ theme }) => theme.body});            /* FF~35 */
+        filter: drop-shadow(0 0 0 1rem ${({ theme }) => theme.body});            /* MDN */
     }
 `
 
@@ -114,15 +112,15 @@ const SbHelpLinkContainer = styled(Link)`
     /* Positioning */
     position: absolute;
     bottom: 0;
-    left: 4%;
 
     /* Display & Box Model | Sizing */
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 4%;
 
     /* Color, Background & Text */
-    color: white;
+    color: ${({ theme }) => theme.body};
     font-size: 1rem;
     text-decoration: none;
     list-style: none;
@@ -130,10 +128,10 @@ const SbHelpLinkContainer = styled(Link)`
 
     /* Animations and Other */
     &:hover{
-        color: #0092DA;
+        color: ${({ theme }) => theme.color2};
         transition: 0.2s ease-in-out;
-        filter: drop-shadow(0 0 1rem white);            /* FF~35 */
-        filter: drop-shadow(0 0 0 1rem white);            /* MDN */
+        filter: drop-shadow(0 0 1rem ${({ theme }) => theme.body});            /* FF~35 */
+        filter: drop-shadow(0 0 0 1rem ${({ theme }) => theme.body});            /* MDN */
     }
 `
 
@@ -143,40 +141,13 @@ const IconHelp = styled(MdHelp)`
     /* Display & Box Model | Sizing */
 
     /* Color, Background & Text */
-    color: white;
+    color: ${({ theme }) => theme.body};
 
     /* Animations and Other */
     &:hover{
-        color: #0092DA;
+        color: ${({ theme }) => theme.color2};
         transition: 0.2s ease-in-out;
-        filter: drop-shadow(0 0 1rem white);            /* FF~35 */
-        filter: drop-shadow(0 0 0 1rem white);            /* MDN */
-    }
-`
-
-const BottonWrap = styled.div`
-    display: flex;
-    justify-content: center;
-`
-
-const Route = styled(Link)`
-    padding: 16px 64px;
-    border: none;
-
-    background: #007f5f;
-    color: #fff;
-
-    font-size: 16px;
-    text-decoration: none;
-
-    cursor: pointer;
-    white-space: nowrap;
-    outline: none;
-    transition: 0.2s ease-in-out;
-
-    &:hover{
-        transition: 0.2s ease-in-out;
-        background: #80b918;
-        color: #010606;
+        filter: drop-shadow(0 0 1rem ${({ theme }) => theme.body});            /* FF~35 */
+        filter: drop-shadow(0 0 0 1rem ${({ theme }) => theme.body});            /* MDN */
     }
 `
