@@ -124,7 +124,7 @@ const UserBox = styled.div`
     right: 1.5vw;
 
     /* Display & Box Model | Sizing */
-    width: 15rem;
+    width: 10rem;
     height: 6.5vh;
     border-radius: 1rem;
     border-style: solid;
@@ -132,7 +132,9 @@ const UserBox = styled.div`
     border-color: ${({ theme }) => theme.body};
     display: grid;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    grid-template-row: 1fr;
+    grid-template-column: 1fr, 1fr; //repeat(2, 80px);
 
     /* Color, Background & Text */
     background: ${({ theme }) => theme.color4};

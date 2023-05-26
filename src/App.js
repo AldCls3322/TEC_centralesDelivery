@@ -9,6 +9,7 @@ import HomeScreenBckgrnd from './components/HomeScreenBckgrnd';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import HomeTitle from './components/HomeTitle';
+import HomeRestaurants from './components/HomeRestaurants';
 import Feature from './components/Feature';
 import HomeAbout from './components/HomeAbout';
 import ContactTitle from './components/ContactTitle';
@@ -59,7 +60,8 @@ function App() {
             <ContactInfo/>
           ]}/>
           <Route path="/" element={[
-            <HomeTitle/>,
+            // <HomeTitle/>,
+            <HomeRestaurants/>,
             <HomeAbout/>
           ]}/>
         </Routes>
