@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import CentralesImg from '../imgs/centrales02.jpg';
 import ShakeShackImg from '../imgs/shakeshack.png';
 
+import { collection, getDocs } from 'firebase/firestore';
+import { firestore } from '../firebase/Firebase';
+import { useState, useEffect } from 'react';
+
 import HomeScreenBckgrnd from './HomeScreenBckgrnd';
 
-const HomeRestaurants = ({goToSushiSection}) => {
+const HomeRestaurants = ({setRestaurantSelected}, ref) => {
     // let { extraImagesID } = useParams();
     // const [ extraImages, setExtraImages ] = useState([]);
     // const getExtraImages = () => {
@@ -38,34 +42,71 @@ const HomeRestaurants = ({goToSushiSection}) => {
     //     });
     // }, ['menuFeatures'])
 
+    const [restaurants, setRestaurants] = useState([]);
+
+    useEffect(() => {
+        console.log(restaurants)
+    }, [restaurants])
+
+    useEffect(() => {
+        const db = collection(firestore, "restaurantes")
+        getDocs(db).then(response => {
+            //console.log(response.docs)
+            const rstau = response.docs.map(doc => ({
+                data: doc.data(),
+                id: doc.id
+            }))
+            setRestaurants(rstau)
+        }).catch(e => console.log(e.message))
+            // .onSnapshot((snap) => { // use 'onSnapshot' to get all information of the firebase data in that instant, and repeates this function everytime the database data changes
+            //     let document = []; // creates an array of objects that are our images images
+            //     snap.forEach(doc => {
+            //         document.push({...doc.data(), id: doc.id}) // adds the data and id of each image in the database and saves it on the previously created array called 'document'
+            //     });
+            //     setDocs(document); // places the document array onto the 'docs' created in line 5
+            // });
+    }, []) // the dependecies that changes are written inside the '[]', this case its 'collection'}
+
+    // setRestaurantSelected = () => ({
+    //     this.state.data = 
+    // })
+
     return (
-        <Container>
+        <Container ref={ref}>
             <BckgrndImg />
             <Wrapper>
-                <Card>
-                    <CardImg />
-                    <CardInfo>
-                        <CardTitle>SHAKE SHACK</CardTitle>
-                        <CardDesc>
-                            <CardTexts>
-                                <CardDescText>Nuestro lugar favorito de hamburguesas.</CardDescText>
-                                <CardTimeContainer>
-                                    <CardTextTime>Tiempo estimado de espera:</CardTextTime>
-                                    <CardTime>32 min</CardTime>
-                                </CardTimeContainer>
-                            </CardTexts>
-                            <BtnContainer>
-                                <BtnMenu>ORDENAR</BtnMenu>
-                            </BtnContainer>
-                        </CardDesc>
-                    </CardInfo>
-                </Card>
+                {restaurants && restaurants.map( (restaurant) => {
+                    return(
+                        <Card key={restaurant.id}>
+                            <CardImg>
+                                <Image src={restaurant.data.Logo}/>
+                            </CardImg>
+                            <CardInfo>
+                                <CardTitle>{restaurant.data.Title}</CardTitle>
+                                <CardDesc>
+                                    <CardTexts>
+                                        <CardDescText>{restaurant.data.Description}</CardDescText>
+                                        <CardTimeContainer>
+                                            <CardTextTime>Tiempo estimado de espera:</CardTextTime>
+                                            <CardTime>{restaurant.data.WaitTime} min</CardTime>
+                                        </CardTimeContainer>
+                                    </CardTexts>
+                                    <BtnContainer>
+                                        <BtnMenu onClick={setRestaurantSelected}>ORDENAR</BtnMenu>
+                                    </BtnContainer>
+                                </CardDesc>
+                            </CardInfo>
+                        </Card>
+                    );
+                })}
             </Wrapper>
         </Container>
     )
 }
 
-export default HomeRestaurants
+const forwardHomeRestaurants = forwardRef(HomeRestaurants)
+
+export default forwardHomeRestaurants
 
 const Container = styled.div`
     /* Positioning */
@@ -136,12 +177,12 @@ const CardImg = styled.div`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
-    width: 135px;
-    height: 135px;
+    max-width: 135px;
+    max-height: 135px;
     
 
     /* Color, Background & Text */
-    background: url(${ShakeShackImg}) center center;
+    //background: url(${ShakeShackImg}) center center;
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: 5%;
@@ -158,6 +199,18 @@ const CardImg = styled.div`
     }
 `
 
+const Image = styled.img`
+    /* Positioning */
+
+    /* Display & Box Model | Sizing */
+    height: 100%;
+    width: 100%;
+
+    /* Color, Background & Text */
+
+    /* Animations and Other */
+`
+
 const CardInfo = styled.div`
     /* Positioning */
 
@@ -166,6 +219,7 @@ const CardInfo = styled.div`
     width: 100%;
 
     /* Color, Background & Text */
+    //text-overflow: ellipsis;
 
     /* Animations and Other */
 `
@@ -199,6 +253,7 @@ const CardDesc = styled.div`
 
     /* Color, Background & Text */
     //background: red;
+    font-size: 1rem;
 
     /* Animations and Other */
 `

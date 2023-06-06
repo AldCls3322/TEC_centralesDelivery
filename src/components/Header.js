@@ -5,12 +5,12 @@ import { MdDensityMedium, MdClose } from 'react-icons/md';
 import { GrClose } from 'react-icons/gr';
 import UserImg from '../imgs/user.png';
 
-const Header = ({navToggle, isOpen}) => {
+const Header = ({navToggle, isopen, goToHomeRestaurantsSection}) => {
     return (
         <Container>
-            {isOpen ? <Icon onClick={navToggle} isOpen={isOpen}/> : <Icon onClick={navToggle} isOpen={isOpen}/> }
-            <SbLinkCoffeeName to="/">                
-                Rappi Centrales
+            {isopen ? <Icon onClick={navToggle} isopen={isopen}/> : <Icon onClick={navToggle} isopen={isopen}/> }
+            <SbLinkCoffeeName to="/homerestaurants" onClick={goToHomeRestaurantsSection}>                
+                TEC to Table
             </SbLinkCoffeeName>
 
             <UserBox>
@@ -75,7 +75,7 @@ const Icon = styled(MdDensityMedium)`
 
     /* Animations and Other */
     transition: all 0.3s ease-in-out;
-    left: ${ ({isOpen}) => (isOpen ? '15%': '2vw') };
+    left: ${ ({isopen}) => (isopen ? '15%': '2vw') };
 
     @media screen and (max-width: 400px) {
         width: 100%;

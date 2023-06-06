@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect, forwardRef } from 'react'
 import style from 'styled-components';
 import TitleImg from '../imgs/centrales02.jpg';
 
-function ContactTitle() {
+const ContactTitle = ({}, ref) => {
     return (
-        <Container>
+        <Container ref={ref}>
             <TitleName>CONTACT US</TitleName>
             <BckgrndImage/>
         </Container>
     )
 }
+
+const forwardContactTitle = forwardRef(ContactTitle)
+
+export default forwardContactTitle
 
 const Container = style.div`
     /* Positioning */
@@ -61,6 +65,3 @@ const BckgrndImage = style.div`
     /* Animations and Other */
     filter: blur(5px) grayscale(100%) brightness(120%);
 `
-
-
-export default ContactTitle

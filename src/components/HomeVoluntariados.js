@@ -1,33 +1,38 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import imageBiblio from '../imgs/biblioTec01.jpg'
+import imageBorrego from '../imgs/BorregoTec01.avif'
+import {NavLink as Link} from 'react-router-dom';
 
-function HomeAbout({}, ref) {
+function HomeVoluntariados({}, ref) {
   return (
     <Container ref={ref}>
         <TitleContainer>
             <ShortBar/>
-            <Title>ABOUT</Title>
+            <Title>VOLUNTARIADOS</Title>
             <LongBar/>
         </TitleContainer>
-        <InfoSec>
+        <InfoContainer>
+            <InfoImage src={imageBorrego}/>
             <InfoDesc>
-                <InfoDescTitle>History</InfoDescTitle>
-                <InfoDescText>Esta pagina web es parte de un proyecto inovativo que busca modernizar los servicios dentro del Tecnologico de Monterrey. Empezando con el campus de Monterrey, desaemos poder desarrollar un servicio de entregas para ser usados por estudiantes, profesores y personal del TEC. <br/> 
+                <InfoDescTitle>Forma parte del Equipo</InfoDescTitle>
+                <InfoDescText>Estamos en busqueda de personas dispuestas a apoyarnos con este proyecto. Requerimos de ideas inovativas y los invitamos a que se formar parte de futuros proyectos que estamos planeando.<br/> 
                 <br/>
-                Nuestro equipo se formo el 27 de Marzo del 2023. Con nuestro objetivo de dar un servicio de inclusion a personas con dificultados de movilidad dentro de nuestro campus. <br/>
-                Vimos una gran oportunidad de crear una pagina web para entregar servicios de comida y salud que se ofrencen dentro del campus. <br/>
-                No obstante, al poco tiempo optamos por abrir el servicio para cualquier estudiante, profesor y personal del TEC en el campus Monterrey.</InfoDescText>
+                En esta invitacion, tambien queremos decirles que pueden apoyarnos con el sistema de entregas y que estamos trabajando para que puedan acreditar horas de servicio social.<br/>
+                No solo limitamos a estudiantes del campus de Motnerrey, queremos expandirnos y hacer este sistema util a todos los campus e instituciones educativas dentro de Mexico.<br/>
+                <br/>
+                Contactanos y muestranos tu interes:</InfoDescText>
+                <ButtonContainer>
+                    <BtnContacto to="/contact">CONTACT US</BtnContacto>
+                </ButtonContainer>
             </InfoDesc>
-            <InfoImage src={imageBiblio}/>
-        </InfoSec>
+        </InfoContainer>
     </Container>
   )
 }
 
-const forwardHomeAbout = forwardRef(HomeAbout)
+const forwardHomeVoluntariados = forwardRef(HomeVoluntariados)
 
-export default forwardHomeAbout
+export default forwardHomeVoluntariados
 
 const Container = styled.div`
     /* Positioning */
@@ -92,7 +97,7 @@ const LongBar = styled.div`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
-    width: 80%;
+    width: 68%;
     height: 5px;
 
     /* Color, Background & Text */
@@ -101,7 +106,7 @@ const LongBar = styled.div`
     /* Animations and Other */
 `
 
-const InfoSec = styled.div`
+const InfoContainer = styled.div`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
@@ -125,6 +130,7 @@ const InfoDesc = styled.div`
     text-align: left;
     margin-top: auto;
     margin-bottom: auto;
+    margin-left: 3%;
 
     /* Color, Background & Text */
 
@@ -136,7 +142,7 @@ const InfoDescTitle = styled.div`
 
     /* Display & Box Model | Sizing */
     font-size: 3rem;
-    font-family: serif, Times;
+    font-family: verdana, Sans-serif;
     font-weight: 600;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -150,10 +156,9 @@ const InfoDescText = styled.div`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
-    font-family: Times;
+    font-family: Sans-serif;
     font-size: 1.5rem;
     text-align: justify;
-    margin-right: 1%;
 
     /* Color, Background & Text */
 
@@ -166,11 +171,54 @@ const InfoImage = styled.img`
     /* Display & Box Model | Sizing */
     height: auto;
     width: 50%;
-    margin-left: 1%;
+    margin-right: 1%;
     object-fit: cover;
-    box-shadow: 5px 10px ${({ theme }) => theme.color10};
+
+    box-shadow: -3px 7px 10px 0px ${({ theme }) => theme.color10};
+    -webkit-box-shadow: -3px 7px 10px 0px ${({ theme }) => theme.color10};
+    -moz-box-shadow: -3px 7px 10px 0px ${({ theme }) => theme.color10};
 
     /* Color, Background & Text */
 
     /* Animations and Other */
+`
+
+const ButtonContainer = styled.div`
+    /* Positioning */
+
+    /* Display & Box Model | Sizing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+
+    /* Color, Background & Text */
+
+    /* Animations and Other */
+`
+
+const BtnContacto = styled(Link)`
+    /* Positioning */
+
+    /* Display & Box Model | Sizing */
+    padding: 1rem 4rem;
+    border: none;
+
+    /* Color, Background & Text */
+    background: ${( { theme } ) => theme.color5};
+    color: ${( { theme } ) => theme.body};
+    font-size: 1.4rem;
+    font-family: monospace;
+    text-decoration: none;
+
+    /* Animations and Other */
+    transition: 0.2s ease-out;
+    &:hover {
+        background: ${( { theme } ) => theme.body};
+        transition: 0.2s ease-out;
+        cursor: pointer;
+        color: ${( { theme } ) => theme.color5};
+        transition: 0.2s ease-in-out;
+        filter: drop-shadow(0 0 1rem ${( { theme } ) => theme.text});
+    }
 `

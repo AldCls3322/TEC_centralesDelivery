@@ -45,6 +45,6 @@ export const GlobalStyles = createGlobalStyle`
         color: ${({ theme }) => theme.text};
         //border-color: ${({ theme }) => theme.bordercolor};
         font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
-        transitiom: all 0.50s linear;
+        transition: all 0.50s linear;
     }
 `

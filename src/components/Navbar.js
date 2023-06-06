@@ -3,32 +3,32 @@ import styled from 'styled-components';
 import {NavLink as Link} from 'react-router-dom';
 import { MdHelp } from 'react-icons/md';
 
-const Navbar = ({isOpen, visibility}) => {
+const Navbar = ({isopen, visibility, goToHomeRestaurantsSection, goToContactSection, goToHomeAboutSection, goToHomeVoluntariadosSection}) => {
     console.log(visibility)
     return (
         visibility ?
-        <Container isOpen={isOpen}>
+        <Container isOpen={isopen}>
             <Menu>
                 <SbLink to="/">HOME</SbLink>
-                <SbLink>RESTAURANTES</SbLink>
+                <SbLink to="/homerestaurants" onClick={goToHomeRestaurantsSection}>RESTAURANTES</SbLink>
                 <SbLink>MY ORDERS</SbLink>
-                <SbLink>VOLUNTARIADOS</SbLink>
-                <SbLink>ABOUT</SbLink>
-                <SbHelpLinkContainer to="/contact">
+                <SbLink to="homerestaurants" on onClick={goToHomeVoluntariadosSection}>VOLUNTARIADOS</SbLink>
+                <SbLink to="/homerestaurants" onClick={goToHomeAboutSection}>ABOUT</SbLink>
+                <SbHelpLinkContainer to="/contact" onClick={goToContactSection}>
                     <IconHelp/>
                     HELP
                 </SbHelpLinkContainer>
             </Menu>
         </Container>
         :
-        <Container isOpen={isOpen}>
+        <Container isOpen={isopen}>
             <Menu>
                 <SbLink to="/">HOME</SbLink>
-                <SbLink>RESTAURANTES</SbLink>
+                <SbLink to="/homerestaurants" onClick={goToHomeRestaurantsSection}>RESTAURANTES</SbLink>
                 <SbLink>MY ORDERS</SbLink>
-                <SbLink>VOLUNTARIADOS</SbLink>
-                <SbLink>ABOUT</SbLink>
-                <SbHelpLinkContainer to="/contact">
+                <SbLink to="homerestaurants" on onClick={goToHomeVoluntariadosSection}>VOLUNTARIADOS</SbLink>
+                <SbLink to="/homerestaurants" onClick={goToHomeAboutSection}>ABOUT</SbLink>
+                <SbHelpLinkContainer to="/contact" onClick={goToContactSection}>
                     <IconHelp/>
                     HELP
                 </SbHelpLinkContainer>

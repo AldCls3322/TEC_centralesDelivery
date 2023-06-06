@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import CentralesImg from '../imgs/centrales02.jpg';
+import {NavLink as Link} from 'react-router-dom';
 
 import HomeScreenBckgrnd from './HomeScreenBckgrnd';
 
-const HomeTitle = ({goToSushiSection}) => {
+const HomeTitle = () => {
     // let { extraImagesID } = useParams();
     // const [ extraImages, setExtraImages ] = useState([]);
     // const getExtraImages = () => {
@@ -43,17 +44,21 @@ const HomeTitle = ({goToSushiSection}) => {
             <Items>
                 <Title>RAPPI CENTRALES</Title>
                 <TextP>Obten tu servicio de comida o salud, de manera comoda</TextP>
-                <OrderButton onClick={goToSushiSection}>Realiza tu pedido</OrderButton>
+                <OrderButton to="/homerestaurants">RESTAURANTES</OrderButton>
             </Items>
         </Container>
     )
 }
 
-export default HomeTitle
+// export default HomeTitle
+
+const forwardHomeTitle = forwardRef(HomeTitle)
+
+export default forwardHomeTitle
 
 const Container = styled.div`
     /* Positioning */
-    //position: absolute;
+    position: absolute;
     z-index: 8;
 
     /* Display & Box Model | Sizing */
@@ -79,7 +84,7 @@ const Items = styled.div`
     height: 100vh;
     max-height: 100%;
     width: 100%;
-    padding: 0 2rem;
+    //padding: 0 2rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -126,7 +131,7 @@ const TextP = styled.div`
 
     /* Animations and Other */
 `
-const OrderButton = styled.div`
+const OrderButton = styled(Link)`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
