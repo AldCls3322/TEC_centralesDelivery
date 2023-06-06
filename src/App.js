@@ -16,7 +16,8 @@ import ContactTitle from './components/ContactTitle';
 import ContactInfo from './components/ContactInfo';
 import HomeVoluntariados from './components/HomeVoluntariados'; 
 import MenuTitle from './components/MenuTitle';
-
+import MenuList from './components/MenuList.jsx';
+import MenuFooter from './components/MenuFooter';
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -103,7 +104,9 @@ function App() {
             <HomeVoluntariados ref={HomeVoluntariadosSection}/>
           ]}/>
           <Route path="/menu-page" element={[
-            <MenuTitle />
+            <MenuTitle />,
+            <MenuList />
+            // <MenuFooter/>
           ]}/>
           <Route path="/" element={[
             <HomeTitle/>

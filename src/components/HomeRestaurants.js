@@ -1,11 +1,11 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
+import {NavLink as Link} from 'react-router-dom';
 import styled from 'styled-components';
 import CentralesImg from '../imgs/centrales02.jpg';
 import ShakeShackImg from '../imgs/shakeshack.png';
 
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../firebase/Firebase';
-import { useState, useEffect } from 'react';
 
 import HomeScreenBckgrnd from './HomeScreenBckgrnd';
 
@@ -92,7 +92,7 @@ const HomeRestaurants = ({setRestaurantSelected}, ref) => {
                                         </CardTimeContainer>
                                     </CardTexts>
                                     <BtnContainer>
-                                        <BtnMenu onClick={setRestaurantSelected}>ORDENAR</BtnMenu>
+                                        <BtnMenu onClick={setRestaurantSelected} to='/menu-page'>ORDENAR</BtnMenu>
                                     </BtnContainer>
                                 </CardDesc>
                             </CardInfo>
@@ -335,7 +335,7 @@ const BtnContainer = styled.div`
     /* Animations and Other */
 `
 
-const BtnMenu = styled.div`
+const BtnMenu = styled(Link)`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
@@ -354,6 +354,7 @@ const BtnMenu = styled.div`
     /* Color, Background & Text */
     background: ${({ theme }) => theme.color3};
     color: ${({ theme }) => theme.body};
+    text-decoration: none;
 
     /* Animations and Other */
     transition: 0.2s ease-out;

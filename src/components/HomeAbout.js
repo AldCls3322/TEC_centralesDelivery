@@ -111,7 +111,6 @@ const InfoSec = styled.div`
     margin: auto;
 
     /* Color, Background & Text */
-    //background-color: black;
 
     /* Animations and Other */
 `
@@ -135,13 +134,13 @@ const InfoDescTitle = styled.div`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
-    font-size: 3rem;
-    font-family: serif, Times;
-    font-weight: 600;
     padding-top: 20px;
     padding-bottom: 20px;
 
     /* Color, Background & Text */
+    font-size: 3rem;
+    font-family: serif, Times;
+    font-weight: 600;
 
     /* Animations and Other */
 `
