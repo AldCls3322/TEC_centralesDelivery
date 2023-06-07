@@ -11,8 +11,8 @@ const Navbar = ({isopen, visibility, goToHomeRestaurantsSection, goToContactSect
             <Menu>
                 <SbLink to="/">HOME</SbLink>
                 <SbLink to="/homerestaurants" onClick={goToHomeRestaurantsSection}>RESTAURANTES</SbLink>
-                <SbLink>MY ORDERS</SbLink>
-                <SbLink to="homerestaurants" on onClick={goToHomeVoluntariadosSection}>VOLUNTARIADOS</SbLink>
+                <SbLink to="/checkout">MY ORDERS</SbLink>
+                <SbLink to="homerestaurants" onClick={goToHomeVoluntariadosSection}>VOLUNTARIADOS</SbLink>
                 <SbLink to="/homerestaurants" onClick={goToHomeAboutSection}>ABOUT</SbLink>
                 <SbHelpLinkContainer to="/contact" onClick={goToContactSection}>
                     <IconHelp/>
@@ -25,7 +25,7 @@ const Navbar = ({isopen, visibility, goToHomeRestaurantsSection, goToContactSect
             <Menu>
                 <SbLink to="/">HOME</SbLink>
                 <SbLink to="/homerestaurants" onClick={goToHomeRestaurantsSection}>RESTAURANTES</SbLink>
-                <SbLink>MY ORDERS</SbLink>
+                <SbLink to="/checkout">MY ORDERS</SbLink>
                 <SbLink to="homerestaurants" on onClick={goToHomeVoluntariadosSection}>VOLUNTARIADOS</SbLink>
                 <SbLink to="/homerestaurants" onClick={goToHomeAboutSection}>ABOUT</SbLink>
                 <SbHelpLinkContainer to="/contact" onClick={goToContactSection}>

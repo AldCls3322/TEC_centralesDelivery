@@ -17,7 +17,10 @@ import ContactInfo from './components/ContactInfo';
 import HomeVoluntariados from './components/HomeVoluntariados'; 
 import MenuTitle from './components/MenuTitle';
 import MenuList from './components/MenuList.jsx';
+//import MenuFooter from './components/MenuFooter2.jsx';
 import MenuFooter from './components/MenuFooter';
+import Cart from './components/Cart';
+import PaymentSuccess from './components/PaymentSuccess.jsx';
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -105,8 +108,14 @@ function App() {
           ]}/>
           <Route path="/menu-page" element={[
             <MenuTitle />,
-            <MenuList />
-            // <MenuFooter/>
+            <MenuList />,
+            <MenuFooter/>
+          ]}/>
+          <Route path="/checkout" element={[
+            <Cart/>
+          ]}/>
+          <Route path="/payment-success" element={[
+            <PaymentSuccess />
           ]}/>
           <Route path="/" element={[
             <HomeTitle/>
