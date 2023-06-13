@@ -58,6 +58,7 @@ const Container = styled.aside`
     /* Animations and Other */
     transition: 0.3s ease-in-out;
     left: ${ ({isOpen}) => (isOpen ? '0': '-1000px') };
+    font-family: comfortaa;
 
     @media screen and (max-width: 400px) {
         width: 100%;

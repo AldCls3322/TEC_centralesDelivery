@@ -1,15 +1,15 @@
 import React, { forwardRef, useState, useEffect } from 'react';
-import {NavLink as Link} from 'react-router-dom';
 import styled from 'styled-components';
 import CentralesImg from '../imgs/centrales02.jpg';
-import ShakeShackImg from '../imgs/shakeshack.png';
 
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../firebase/Firebase';
 
-import HomeScreenBckgrnd from './HomeScreenBckgrnd';
+import { useDispatch } from 'react-redux';
+import { selectRestaurant } from '../stores/restaurant/restaurantSlice';
+import HomeRestaurantCard from './HomeRestaurantCard';
 
-const HomeRestaurants = ({setRestaurantSelected}, ref) => {
+const HomeRestaurants = ({}, ref) => {
     // let { extraImagesID } = useParams();
     // const [ extraImages, setExtraImages ] = useState([]);
     // const getExtraImages = () => {
@@ -43,6 +43,7 @@ const HomeRestaurants = ({setRestaurantSelected}, ref) => {
     // }, ['menuFeatures'])
 
     const [restaurants, setRestaurants] = useState([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         console.log(restaurants)
@@ -57,6 +58,7 @@ const HomeRestaurants = ({setRestaurantSelected}, ref) => {
                 id: doc.id
             }))
             setRestaurants(rstau)
+            console.log(restaurants)
         }).catch(e => console.log(e.message))
             // .onSnapshot((snap) => { // use 'onSnapshot' to get all information of the firebase data in that instant, and repeates this function everytime the database data changes
             //     let document = []; // creates an array of objects that are our images images
@@ -66,10 +68,11 @@ const HomeRestaurants = ({setRestaurantSelected}, ref) => {
             //     setDocs(document); // places the document array onto the 'docs' created in line 5
             // });
     }, []) // the dependecies that changes are written inside the '[]', this case its 'collection'}
-
-    // setRestaurantSelected = () => ({
-    //     this.state.data = 
-    // })
+    
+    const onAddRestaurant = (restaurant) => {
+        console.log(restaurant)
+        dispatch(selectRestaurant(restaurant))
+    }
 
     return (
         <Container ref={ref}>
@@ -77,26 +80,7 @@ const HomeRestaurants = ({setRestaurantSelected}, ref) => {
             <Wrapper>
                 {restaurants && restaurants.map( (restaurant) => {
                     return(
-                        <Card key={restaurant.id}>
-                            <CardImg>
-                                <Image src={restaurant.data.Logo}/>
-                            </CardImg>
-                            <CardInfo>
-                                <CardTitle>{restaurant.data.Title}</CardTitle>
-                                <CardDesc>
-                                    <CardTexts>
-                                        <CardDescText>{restaurant.data.Description}</CardDescText>
-                                        <CardTimeContainer>
-                                            <CardTextTime>Tiempo estimado de espera:</CardTextTime>
-                                            <CardTime>{restaurant.data.WaitTime} min</CardTime>
-                                        </CardTimeContainer>
-                                    </CardTexts>
-                                    <BtnContainer>
-                                        <BtnMenu onClick={setRestaurantSelected} to='/menu-page'>ORDENAR</BtnMenu>
-                                    </BtnContainer>
-                                </CardDesc>
-                            </CardInfo>
-                        </Card>
+                        <HomeRestaurantCard key={restaurant.id} restaurant={restaurant.data} onAddRestaurant={onAddRestaurant}/>
                     );
                 })}
             </Wrapper>
@@ -151,221 +135,6 @@ const Wrapper = styled.div`
     filter: none;
     @media screen and (max-width: 650px) {
         width: 100%;
-    }
-`
-
-const Card = styled.div`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-    width: 70%;
-    min-width: 400px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    border-radius: 30px;
-    margin: 2%;
-    //max-margin: 5px;
-
-    /* Color, Background & Text */
-    background: ${({ theme }) => theme.body};
-
-    /* Animations and Other */
-`
-
-const CardImg = styled.div`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-    max-width: 135px;
-    max-height: 135px;
-    
-
-    /* Color, Background & Text */
-    //background: url(${ShakeShackImg}) center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-left: 5%;
-    margin-right: 5%;
-
-    /* Animations and Other */
-    transition: 0.2s ease-out;
-    &:hover {
-        transition: 0.2s ease-out;
-        cursor: pointer;
-        transition: 0.2s ease-in-out;
-        filter: drop-shadow(0 0 0.5rem ${({ theme }) => theme.color9});            /* FF~35 */
-        filter: drop-shadow(0 0 0 0.5rem ${({ theme }) => theme.color9});            /* MDN */
-    }
-`
-
-const Image = styled.img`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-    height: 100%;
-    width: 100%;
-
-    /* Color, Background & Text */
-
-    /* Animations and Other */
-`
-
-const CardInfo = styled.div`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-    height: 100%;
-    width: 100%;
-
-    /* Color, Background & Text */
-    //text-overflow: ellipsis;
-
-    /* Animations and Other */
-`
-
-const CardTitle = styled.div`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-    display: flex;
-    height: 40%;
-    vertical-align: middle;
-    align-items: center;
-    padding-left: 5%;
-
-    /* Color, Background & Text */
-    // background: red;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    font-weight: bold;
-
-    /* Animations and Other */
-`
-
-const CardDesc = styled.div`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-    display: flex;
-    width: 100%;
-    height: 60%;
-
-    /* Color, Background & Text */
-    //background: red;
-    font-size: 1rem;
-
-    /* Animations and Other */
-`
-
-const CardTexts = styled.div`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-    //display: flex;
-    width: 70%;
-    height: 100%;
-
-    /* Color, Background & Text */
-
-    /* Animations and Other */
-`
-
-const CardDescText = styled.div`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-    width: 100%;
-    height: 60%;
-
-    /* Color, Background & Text */
-
-    /* Animations and Other */
-`
-
-const CardTimeContainer = styled.div`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 40%;
-
-    /* Color, Background & Text */
-    font-weight: 550;
-
-    /* Animations and Other */
-`
-
-const CardTextTime = styled.div`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-
-    /* Color, Background & Text */
-
-    /* Animations and Other */
-`
-
-const CardTime = styled.div`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-
-    /* Color, Background & Text */
-
-    /* Animations and Other */
-`
-
-const BtnContainer = styled.div`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-    width: 30%;
-    height: 100%;
-    display: flex;
-    text-align: center;
-    vertical-align: center;
-    align-items: center;
-    justify-content: center;
-
-    /* Color, Background & Text */
-
-    /* Animations and Other */
-`
-
-const BtnMenu = styled(Link)`
-    /* Positioning */
-
-    /* Display & Box Model | Sizing */
-    width: 90%;
-    height: 50%;
-    max-width: 180px;
-    max-height: 40px;
-    display: flex;
-    text-align: center;
-    vertical-align: center;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    font-weight: 600;
-
-    /* Color, Background & Text */
-    background: ${({ theme }) => theme.color3};
-    color: ${({ theme }) => theme.body};
-    text-decoration: none;
-
-    /* Animations and Other */
-    transition: 0.2s ease-out;
-    &:hover {
-        background: ${({ theme }) => theme.color2};
-        transition: 0.2s ease-out;
-        cursor: pointer;
-        color: ${({ theme }) => theme.color7};
-        transition: 0.2s ease-in-out;
-        filter: drop-shadow(0 0 1rem ${({ theme }) => theme.color9});            /* FF~35 */
-        filter: drop-shadow(0 0 0 1rem ${({ theme }) => theme.color9});            /* MDN */
     }
 `
 

@@ -1,26 +1,30 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MdDensityMedium, MdClose } from 'react-icons/md';
 import { GrClose } from 'react-icons/gr';
 import UserImg from '../imgs/user.png';
 
-const Header = ({navToggle, isopen, goToHomeRestaurantsSection}) => {
+const Header = ({navToggle, isopen, goToHomeRestaurantsSection, signOut}) => {
+    const [picture, setPicture] = useState(localStorage.getItem('profilePic'));
+    useEffect(() => {
+        setPicture(localStorage.getItem('profilePic'));
+    });
+
     return (
         <Container>
             {isopen ? <Icon onClick={navToggle} isopen={isopen}/> : <Icon onClick={navToggle} isopen={isopen}/> }
             <SbLinkCoffeeName to="/homerestaurants" onClick={goToHomeRestaurantsSection}>                
                 TEC to Table
             </SbLinkCoffeeName>
-
-            <UserBox>
+            <UserBox onClick={signOut}>
                 <SideTextGrid>
                     <TextContainer>
                         <TextLink>Profile</TextLink>
                     </TextContainer>
                 </SideTextGrid>
                 <SideProfileImageGrid>
-                    <ProfileImage/>
+                    <ProfileImage src={picture}/>
                 </SideProfileImageGrid>
             </UserBox>
         </Container>
@@ -221,7 +225,7 @@ const SideProfileImageGrid = styled.div`
     /* Animations and Other */
 `
 
-const ProfileImage = styled.div`
+const ProfileImage = styled.img`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
@@ -237,7 +241,7 @@ const ProfileImage = styled.div`
     border-radius: 50%;
 
     /* Color, Background & Text */
-    background: url(${UserImg}) center center;
+    //background: url(${UserImg}) center center;
     background-size: cover;
 
     /* Animations and Other */    
@@ -259,6 +263,7 @@ const SbLinkCoffeeName = styled(Link)`
     /* Color, Background & Text */
     text-decoration: none;
     color: ${({ theme }) => theme.body};
+    font-family: comfortaa;
 
     /* Animations and Other */
     &:hover{

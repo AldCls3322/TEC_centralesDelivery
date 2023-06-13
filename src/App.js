@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 //import { Route, Switch } from 'react-router';
 import styled,  { ThemeProvider }  from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyles } from "./Themes";
-
+import { auth, signInWithGoogle } from './firebase/Firebase';
 import HomeScreenBckgrnd from './components/HomeScreenBckgrnd';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
@@ -21,8 +21,20 @@ import MenuList from './components/MenuList.jsx';
 import MenuFooter from './components/MenuFooter';
 import Cart from './components/Cart';
 import PaymentSuccess from './components/PaymentSuccess.jsx';
+import { onAuthStateChanged } from "firebase/auth";
+import SignUp from './components/SignUp';
 
 function App() {
+  const [user, setUser] = useState();
+  const signOut = () => {
+    auth.signOut().then(()=>{
+      localStorage.removeItem('name');
+      localStorage.removeItem('email');
+      localStorage.removeItem('profilePic');
+      setUser(null);
+    })
+  }
+
   const [theme, setTheme] = useState('light')
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light')
@@ -85,56 +97,60 @@ function App() {
   const [restaurantSelected, setRestaurantSelected] = useState("");
   useEffect(() => {
     console.log(restaurantSelected)
+    console.log(user)
+    console.log(localStorage)
+    //onAuthStateChanged(auth,  )
   })
 
-
   return (
+    !user ? <SignUp setUser={setUser} user={user}/>
+    :
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles/>
-    <div className="App">
-        <Navbar isopen={isopen} visibility={visible} goToHomeRestaurantsSection={goToHomeRestaurantsSection} goToContactSection={goToContactSection} goToHomeAboutSection={goToHomeAboutSection} goToHomeVoluntariadosSection={goToHomeVoluntariadosSection}/>
-        <Header navToggle={navToggle} isopen={isopen} goToHomeRestaurantsSection={goToHomeRestaurantsSection}/>
-      
-        <Routes>
-          <Route path="/contact" element={[
-            <ContactTitle ref={ContactSection}/>,
-            <ContactInfo/>
-          ]}/>
-          <Route path="/homerestaurants" element={[
-            // <HomeTitle/>,
-            <HomeRestaurants ref={HomeRestaurantsSection} setRestaurantSelected={setRestaurantSelected}/>,
-            <HomeAbout ref={HomeAboutSection}/>,
-            <HomeVoluntariados ref={HomeVoluntariadosSection}/>
-          ]}/>
-          <Route path="/menu-page" element={[
-            <MenuTitle />,
-            <MenuList />,
-            <MenuFooter/>
-          ]}/>
-          <Route path="/checkout" element={[
-            <Cart/>
-          ]}/>
-          <Route path="/payment-success" element={[
-            <PaymentSuccess />
-          ]}/>
-          <Route path="/" element={[
-            <HomeTitle/>
-          ]}/>
-        </Routes>
-        {/* <HomeScreenBckgrnd /> */}
-    </div>
+      <div className="App">
+          <Navbar isopen={isopen} visibility={visible} goToHomeRestaurantsSection={goToHomeRestaurantsSection} goToContactSection={goToContactSection} goToHomeAboutSection={goToHomeAboutSection} goToHomeVoluntariadosSection={goToHomeVoluntariadosSection}/>
+          <Header navToggle={navToggle} isopen={isopen} goToHomeRestaurantsSection={goToHomeRestaurantsSection} signOut={signOut}/>
+        
+          <Routes>
+            <Route path="/contact" element={[
+              <ContactTitle ref={ContactSection}/>,
+              <ContactInfo/>
+            ]}/>
+            <Route path="/homerestaurants" element={[
+              // <HomeTitle/>,
+              <HomeRestaurants ref={HomeRestaurantsSection} setRestaurantSelected={setRestaurantSelected}/>,
+              <HomeAbout ref={HomeAboutSection}/>,
+              <HomeVoluntariados ref={HomeVoluntariadosSection}/>
+            ]}/>
+            <Route path="/menu-page" element={[
+              <MenuTitle />,
+              <MenuList />,
+              <MenuFooter/>
+            ]}/>
+            <Route path="/checkout" element={[
+              <Cart/>
+            ]}/>
+            <Route path="/payment-success" element={[
+              <PaymentSuccess />
+            ]}/>
+            <Route path="/" element={[
+              <HomeTitle/>
+            ]}/>
+          </Routes>
+          {/* <HomeScreenBckgrnd /> */}
+      </div>
     </ThemeProvider>
   );
 }
 
 export default App;
 
-/* Positioning */
+  /* Positioning */
 
-/* Display & Box Model | Sizing */
+  /* Display & Box Model | Sizing */
 
-/* Color, Background & Text */
+  /* Color, Background & Text */
 
-/* Animations and Other */
+  /* Animations and Other */
 
 // Ref inside Router: https://stackoverflow.com/questions/61277068/react-scroll-nav-using-useref-in-seperate-routes

@@ -18,6 +18,7 @@ const Container = styled.div`
     /* Display & Box Model | Sizing */
 
     /* Color, Background & Text */
+    //transition: 0.2s ease-in-out;
 
     /* Animations and Other */
     // className="nav-item px-2"
@@ -27,11 +28,26 @@ const SelectedOption = styled.button`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
+    border: none;
 
     /* Color, Background & Text */
+    background: transparent;
+    color: ${( { theme } ) => theme.color8};
+    border-bottom: solid transparent;
 
     /* Animations and Other */
     // className="pt-7 pb-3"
+    &:hover{
+        transition: 0.5s ease-in-out;
+        color: ${({ theme }) => theme.color10};
+        border-bottom: solid ${( { theme } ) => theme.color5};
+    }
+
+    :active, :focus {
+        color: ${({ theme }) => theme.color10};
+        font-weight: 600;
+        border-bottom: solid ${( { theme } ) => theme.color5};
+    }
 `
 
 const TextContainer = styled.span`
@@ -40,12 +56,7 @@ const TextContainer = styled.span`
     /* Display & Box Model | Sizing */
 
     /* Color, Background & Text */
+    font-size: 1.5rem;
 
     /* Animations and Other */
-    &:hover{
-        color: ${({ theme }) => theme.color4}
-        transition: 0.2s ease-in-out;
-        filter: drop-shadow(0 0 1rem ${({ theme }) => theme.body});            /* FF~35 */
-        filter: drop-shadow(0 0 0 1rem ${({ theme }) => theme.body});            /* MDN */
-    }
 `

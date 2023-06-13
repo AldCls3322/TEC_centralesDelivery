@@ -29,8 +29,14 @@ const Container = styled.div`
     position: sticky;
 
     /* Display & Box Model | Sizing */
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 8%;
 
     /* Color, Background & Text */
+    background: transparent;
+    color: ${( { theme } ) => theme.color9};
 
     /* Animations and Other */
 `
@@ -41,9 +47,11 @@ const Wrapper = styled.div`
     /* Display & Box Model | Sizing */
     display: flex;
     align-items: center;
-
+    padding-left: 2%;
+    padding-right: 2px;
 
     /* Color, Background & Text */
+    border-bottom: solid ${( { theme } ) => theme.color5};
 
     /* Animations and Other */
     //className="container mx-auto py-2 border-b-gray-400 border-b-1"

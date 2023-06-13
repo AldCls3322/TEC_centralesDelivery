@@ -2,16 +2,19 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../firebase/Firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import { addToCart } from '../stores/cart/cartSlice';
+import { restaurantInformation } from '../stores/restaurant/restaurantSlice';
 import MenuProductsCard from './MenuProductsCard.jsx';
 
 const MenuList = ({setRestaurantSelected}) => {
     const [products, setProducts] = useState([]);
+    const restaurant = useSelector(restaurantInformation);
+    //console.log(restaurant[0].Title)
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const db = collection(firestore, "AlsStar")
+        const db = collection(firestore, restaurant[0].Title)
         getDocs(db).then(response => {
             //console.log(response.docs)
             const prd = response.docs.map(doc => ({
@@ -30,7 +33,7 @@ const MenuList = ({setRestaurantSelected}) => {
     }, []) // the dependecies that changes are written inside the '[]', this case its 'collection'}
 
     const onAddProduct = (product) => {
-        console.log(product)
+        //console.log(product)
         dispatch(addToCart(product))
     }
 

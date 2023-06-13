@@ -2,15 +2,20 @@ import React, { useState, useEffect }from 'react'
 import styled from 'styled-components'
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../firebase/Firebase';
+import { useSelector, useDispatch } from "react-redux";
+import { clearRestaurant, selectRestaurant, restaurantInformation } from "../stores/restaurant/restaurantSlice";
 
 const MenuTitle = () => {
+  const restaurant = useSelector(restaurantInformation);
+  //console.log(selectedRestaurant)
+
   return (
     <Container>
       <ImgContainer>
         <ImgLogo src='https://tecfood.tec.mx/sites/g/files/vgjovo1061/files/styles/de2e/public/2022-09/MTY-al-star-logo.jpeg?itok=mGIc2MM8'/>
       </ImgContainer>
       <TitleContainer>
-        <Title>AL's Star Burger Mexico</Title>
+        <Title>{restaurant[0].Title}</Title>
         <TitleBar />
       </TitleContainer>
     </Container>

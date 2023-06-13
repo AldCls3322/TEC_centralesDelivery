@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 import cartReducer from "./cart/cartSlice";
-// import productReducer from "./menu/productsSlice";
+import restaurantReducer from "./restaurant/restaurantSlice";
 // import addressReducer from "./userInfo/addressSlice";
 
 const rootReducer = combineReducers(
     {
-        cart: cartReducer
-        // products: productReducer,
+        cart: cartReducer,
+        restaurant: restaurantReducer
         // address: addressReducer
     }
 );
