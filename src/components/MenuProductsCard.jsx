@@ -13,7 +13,7 @@ const MenuProductsCard = ({ product, onAddProduct }) => {
         <FoodCard>
             <FoodImgContainer>
                 <FoodImgLimitCont>
-                    <FoodImg src={ClascBrger}/>
+                    <FoodImg src={product.img}/>
                 </FoodImgLimitCont>
             </FoodImgContainer>
             <FoodDescContainer>
@@ -37,17 +37,26 @@ const FoodCard = styled.div`
 
     /* Display & Box Model | Sizing */
     display: flex;
-    width: 96%;
+    width: 94%;
     height: 150px;
     padding-left: 2%;
     padding-right: 2%;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1rem;
+    border-style: solid;
+    border-color: ${({ theme }) => theme.color5};
+    box-shadow: 0 8px 9px -2px ${({ theme }) => theme.color9};
 
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        height: auto;
+    }
 `
 
 const FoodImgContainer = styled.div`
@@ -63,6 +72,10 @@ const FoodImgContainer = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 70px;
+        height: 70px;
+    }
 `
 
 const FoodImgLimitCont = styled.div`    
@@ -81,6 +94,8 @@ const FoodImgLimitCont = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+    }
 `
 
 const FoodImg = styled.img`
@@ -105,6 +120,9 @@ const FoodDescContainer = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        max-width: 60%;
+    }
 `
 
 const CardTitle = styled.div`
@@ -123,6 +141,10 @@ const CardTitle = styled.div`
     font-weight: bold;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        overflow: scroll;
+        font-size: 1.2rem;
+    }
 `
 
 const CardTexts = styled.div`
@@ -131,7 +153,7 @@ const CardTexts = styled.div`
     /* Display & Box Model | Sizing */
     //display: flex;
     width: 100%;
-    height: 100%;
+    height: 70%;
 
     /* Color, Background & Text */
     font-size: 1rem;
@@ -153,6 +175,10 @@ const CardDescText = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        overflow: scroll;
+        font-size: 0.9rem;
+    }
 `
 
 const BtnContainer = styled.div`
@@ -171,6 +197,10 @@ const BtnContainer = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 30%;
+        font-size: 0.7rem;
+    }
 `
 
 const CardPrice = styled.div`

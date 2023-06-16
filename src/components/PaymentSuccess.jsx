@@ -54,6 +54,9 @@ const BckGrndContainer = styled.div`
 
     /* Animations and Other */
     filter: blur(5px) grayscale(100%) brightness(120%);
+    // @media screen and (max-width: 700px){
+    //     display: none;
+    // }
 `
 
 const PaymentInfoContainer = styled.div`
@@ -74,6 +77,10 @@ const PaymentInfoContainer = styled.div`
     background-color: ${( { theme } ) => theme.body};
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 100%;
+        background-color: transparent;
+    }
 `
 
 const AlertContainer = styled.div`
@@ -110,6 +117,9 @@ const Alert = styled.div`
     background-color: ${( { theme } ) => theme.acceptColor}; //rgb(56 173 48); //#4BB543; //rgb(24 197 11)
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        font-size: 1.2rem;
+    }
 `
 
 const AlertIcon = styled(BsFillInfoCircleFill)`

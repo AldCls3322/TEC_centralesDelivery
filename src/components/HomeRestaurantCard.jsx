@@ -13,7 +13,7 @@ const HomeRestaurantCard = ({ restaurant, onAddRestaurant }) => {
         onAddRestaurant(restaurant)
     }
 
-    console.log(restaurant)
+    //console.log(restaurant)
 
     return (
         <Card>
@@ -59,6 +59,12 @@ const Card = styled.div`
     filter: drop-shadow(0 10px 1rem ${({ theme }) => theme.color9});            /* FF~35 */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 80%;
+        height: 100px;
+        margin: 8%;
+        min-width: 300px;
+    }
 `
 
 const CardImg = styled.div`
@@ -129,6 +135,12 @@ const CardTitle = styled.div`
     font-weight: bold;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        height: 55%;
+        font-size: 1.3rem;
+        border-radius: 30px;
+        overflow: clip;
+    }
 `
 
 const CardDesc = styled.div`
@@ -144,6 +156,9 @@ const CardDesc = styled.div`
     font-size: 1rem;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        height: 45%;
+    }
 `
 
 const CardTexts = styled.div`
@@ -155,18 +170,25 @@ const CardTexts = styled.div`
     height: 100%;
 
     /* Color, Background & Text */
+    text-overflow: ellipsis;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        display: none;
+    }
 `
 
 const CardDescText = styled.div`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
+    //display: inline-block;
     width: 100%;
     height: 60%;
 
     /* Color, Background & Text */
+    text-overflow: ellipsis;
+    overflow: clip;
 
     /* Animations and Other */
 `
@@ -221,4 +243,8 @@ const BtnContainer = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 80%;
+        height: 100%;
+    }
 `

@@ -4,7 +4,7 @@ import { TabItem } from "./TabItem";
 
 export const Tabs = ({ list, activeTab, onTabSwitch}) => {
     let active = activeTab === '' ? list[0] : activeTab;
-    console.log(active);
+    //console.log(active);
     return (
         <Container>
             <Wrapper>

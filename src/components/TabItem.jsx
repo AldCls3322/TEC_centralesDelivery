@@ -59,4 +59,7 @@ const TextContainer = styled.span`
     font-size: 1.5rem;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        font-size: 0.8rem;
+    }
 `

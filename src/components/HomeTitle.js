@@ -1,49 +1,23 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import CentralesImg from '../imgs/centrales02.jpg';
 import {NavLink as Link} from 'react-router-dom';
 
-import HomeScreenBckgrnd from './HomeScreenBckgrnd';
+import Logo from '../imgs/LogoTTT.svg';
 
 const HomeTitle = () => {
-    // let { extraImagesID } = useParams();
-    // const [ extraImages, setExtraImages ] = useState([]);
-    // const getExtraImages = () => {
-    //     database.collection('menuFeatures')
-    //     .doc('h9ced4u4qRMwCvsDyni9')
-    //     .onSnapshot((snapshot) => {
-    //         let ImgTitle = snapshot.docs[0][1];
-    //     })
-    // }
-    // useEffect(() => {
-    //     getExtraImages();
-    // }, ['h9ced4u4qRMwCvsDyni9'])
-    
-    
-    // const [ImgTitle, setImgTitle] = useState()
-    // useEffect(() => {
-    //     var docRef = database.collection('menuFeatures').doc('h9ced4u4qRMwCvsDyni9');
-    //     docRef.get().then((doc) => {
-    //         if (doc.exists) {
-    //             console.log("Document data:", doc.data());
-    //             var Img = doc.data().url;
-    //             console.log(Img);
-    //             setImgTitle(Img);
-    //         } else {
-    //             // doc.data() will be undefined in this case
-    //             console.log("No such document!");
-    //         }
-    //     }).catch((error) => {
-    //         console.log("Error getting document:", error);
-    //     });
-    // }, ['menuFeatures'])
+    const [profile, setProfile] = useState();
+    useEffect(() => {
+        setProfile(localStorage.getItem('name'));
+    })
 
     return (
         <Container>
             <BckgrndImg />
             <Items>
-                <Title>RAPPI CENTRALES</Title>
-                <TextP>Obten tu servicio de comida o salud, de manera comoda</TextP>
+                <Icon src={Logo}/>
+                <Title>Tec to Table</Title>
+                <TextP>Bienvenido!! {profile}</TextP>
                 <OrderButton to="/homerestaurants">RESTAURANTES</OrderButton>
             </Items>
         </Container>
@@ -84,25 +58,49 @@ const Items = styled.div`
     height: 100vh;
     max-height: 100%;
     width: 100%;
-    //padding: 0 2rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     line-height: 1;
+    margin-top: auto;
+    margin-bottom: auto;
 
     /* Color, Background & Text */
     color: #000000;
     text-transform: uppercase;
     font-weight: bold;
     text-align: left;
-    //background-image: linear-gradient(to right, transparent,${({ theme }) => theme.body},transparent);
-
-
+    background: radial-gradient(${({ theme }) => theme.body}, transparent);
+    
     /* Animations and Other */
     filter: none;
-    @media screen and (max-width: 650px) {
-        width: 100%;
+    @media screen and (max-width: 700px){
+        background: radial-gradient(${({ theme }) => theme.body}, transparent);
     }
+`
+
+const IconLogoContainer = styled.div`
+    /* Positioning */
+
+    /* Display & Box Model | Sizing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Color, Background & Text */
+
+    /* Animations and Other */
+`
+
+const Icon = styled.img`
+    /* Positioning */
+
+    /* Display & Box Model | Sizing */
+    height: 10rem;
+
+    /* Color, Background & Text */
+
+    /* Animations and Other */
 `
 
 const Title = styled.div`
@@ -113,6 +111,7 @@ const Title = styled.div`
     box-shadow: 3px 5px #004B93;
 
     /* Color, Background & Text */
+    font-family: comfortaa;
     font-size: clamp(2.5rem, 10vw, 5rem);
     letter-spacing: 3px;
 
@@ -127,9 +126,12 @@ const TextP = styled.div`
 
     /* Color, Background & Text */
     font-size: clamp(2rem, 2.5vw, 3rem);
-    font-family: roboto;
+    font-family: comfortaa;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        font-size: 1rem;
+    }
 `
 const OrderButton = styled(Link)`
     /* Positioning */

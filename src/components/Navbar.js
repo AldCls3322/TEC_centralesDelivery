@@ -4,7 +4,7 @@ import {NavLink as Link} from 'react-router-dom';
 import { MdHelp } from 'react-icons/md';
 
 const Navbar = ({isopen, visibility, goToHomeRestaurantsSection, goToContactSection, goToHomeAboutSection, goToHomeVoluntariadosSection}) => {
-    console.log(visibility)
+    //console.log(visibility)
     return (
         visibility ?
         <Container isOpen={isopen}>
@@ -60,8 +60,13 @@ const Container = styled.aside`
     left: ${ ({isOpen}) => (isOpen ? '0': '-1000px') };
     font-family: comfortaa;
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 700px){
         width: 100%;
+        height: 100vh;
+        background: rgba(36, 39, 43, 0.95);
+        overflow: hidden;
+        // position: -webkit-sticky; // makes the header be always atop no matter if you scroll
+        // position: sticky;
     }
 `
 
@@ -77,8 +82,8 @@ const Menu = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
-    @media screen and (max-width: 480px){
-        grid-template-rows: repeat(3,60px);
+    @media screen and (max-width: 700px){
+        grid-template-rows: repeat(5,80px);
     }
 `
 

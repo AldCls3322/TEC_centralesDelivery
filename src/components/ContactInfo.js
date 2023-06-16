@@ -76,6 +76,9 @@ const Container = style.div`
     background: ${({ theme }) => theme.body};
 
     /* Animations and Other */
+    @media only screen and (max-width: 400px){
+        display: block  ;
+    }
 `
 
 const Card = style.div`
@@ -94,6 +97,11 @@ const Card = style.div`
     .subCard {
         display: flex;
         padding-top: 7%;
+    }
+    @media only screen and (max-width: 400px){
+        width: 100%;
+        height: auto;
+        margin-bottom: 30px;
     }
 `
 
@@ -189,7 +197,7 @@ const MailSender = style.div`
 
     .btn-snd-email:active {
         border: none;
-        translate(-1px, 1px); /* CHECK HOW TO SIMPLE ANIMATE IT */
+        translate(-5px, 5px); /* CHECK HOW TO SIMPLE ANIMATE IT */
     }
 `
 

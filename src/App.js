@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 //import { Route, Switch } from 'react-router';
 import styled,  { ThemeProvider }  from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyles } from "./Themes";
-import { auth, signInWithGoogle } from './firebase/Firebase';
+import { auth, signInWithGoogle, signOutOfGoogle } from './firebase/Firebase';
 import HomeScreenBckgrnd from './components/HomeScreenBckgrnd';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
@@ -23,15 +23,19 @@ import Cart from './components/Cart';
 import PaymentSuccess from './components/PaymentSuccess.jsx';
 import { onAuthStateChanged } from "firebase/auth";
 import SignUp from './components/SignUp';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState();
+  const navigate = useNavigate();
   const signOut = () => {
     auth.signOut().then(()=>{
       localStorage.removeItem('name');
       localStorage.removeItem('email');
       localStorage.removeItem('profilePic');
       setUser(null);
+      signOutOfGoogle();
+      navigate('/');
     })
   }
 
@@ -94,11 +98,13 @@ function App() {
     new Promise((r) => setTimeout(r, 10)).then(window.scrollTo({top: 0, behavior: "smooth"})).then(navOff);
   }, [pathname]);
 
-  const [restaurantSelected, setRestaurantSelected] = useState("");
+  //const [picture, setPicture] = useState(localStorage.getItem('profilePic'));
+  const [restaurantSelected, setRestaurantSelected] = useState();
   useEffect(() => {
-    console.log(restaurantSelected)
-    console.log(user)
+    //console.log(restaurantSelected)
+    //console.log(user)
     console.log(localStorage)
+    //setPicture(localStorage.getItem('profilePic'));
     //onAuthStateChanged(auth,  )
   })
 
@@ -109,7 +115,7 @@ function App() {
       <GlobalStyles/>
       <div className="App">
           <Navbar isopen={isopen} visibility={visible} goToHomeRestaurantsSection={goToHomeRestaurantsSection} goToContactSection={goToContactSection} goToHomeAboutSection={goToHomeAboutSection} goToHomeVoluntariadosSection={goToHomeVoluntariadosSection}/>
-          <Header navToggle={navToggle} isopen={isopen} goToHomeRestaurantsSection={goToHomeRestaurantsSection} signOut={signOut}/>
+          <Header navToggle={navToggle} isopen={isopen} goToHomeRestaurantsSection={goToHomeRestaurantsSection} signOut={signOut} />
         
           <Routes>
             <Route path="/contact" element={[

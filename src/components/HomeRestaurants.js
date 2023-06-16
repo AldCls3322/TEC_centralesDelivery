@@ -45,9 +45,9 @@ const HomeRestaurants = ({}, ref) => {
     const [restaurants, setRestaurants] = useState([]);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        console.log(restaurants)
-    }, [restaurants])
+    // useEffect(() => {
+    //     console.log(restaurants)
+    // }, [restaurants])
 
     useEffect(() => {
         const db = collection(firestore, "restaurantes")
@@ -58,7 +58,7 @@ const HomeRestaurants = ({}, ref) => {
                 id: doc.id
             }))
             setRestaurants(rstau)
-            console.log(restaurants)
+            //console.log(restaurants)
         }).catch(e => console.log(e.message))
             // .onSnapshot((snap) => { // use 'onSnapshot' to get all information of the firebase data in that instant, and repeates this function everytime the database data changes
             //     let document = []; // creates an array of objects that are our images images
@@ -70,7 +70,7 @@ const HomeRestaurants = ({}, ref) => {
     }, []) // the dependecies that changes are written inside the '[]', this case its 'collection'}
     
     const onAddRestaurant = (restaurant) => {
-        console.log(restaurant)
+        //console.log(restaurant)
         dispatch(selectRestaurant(restaurant))
     }
 

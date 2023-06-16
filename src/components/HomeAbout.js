@@ -33,7 +33,7 @@ const Container = styled.div`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
-    display: block  ;
+    display: block;
     width: 100%;
     height: 100vh;
     justify-content: center;
@@ -43,6 +43,10 @@ const Container = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        height: auto;
+        // overflow: scroll;
+    }
 `
 
 const TitleContainer = styled.div`
@@ -72,6 +76,9 @@ const ShortBar = styled.div`
     background: ${({ theme }) => theme.color5};
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 10%;
+    }
 `
 
 const Title = styled.div`
@@ -86,6 +93,10 @@ const Title = styled.div`
     font-weight: 500;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        font-size: 1.7rem;
+        font-family: comfortaa;
+    }
 `
 
 const LongBar = styled.div`
@@ -99,6 +110,9 @@ const LongBar = styled.div`
     background: ${({ theme }) => theme.color5};
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 50%;
+    }
 `
 
 const InfoSec = styled.div`
@@ -113,6 +127,9 @@ const InfoSec = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        display: block;
+    }
 `
 
 const InfoDesc = styled.div`
@@ -128,6 +145,9 @@ const InfoDesc = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 100%;
+    }
 `
 
 const InfoDescTitle = styled.div`
@@ -143,6 +163,9 @@ const InfoDescTitle = styled.div`
     font-weight: 600;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        font-size: 2rem;
+    }
 `
 
 const InfoDescText = styled.div`
@@ -157,6 +180,13 @@ const InfoDescText = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        height: 30vh;
+        overflow: scroll;
+        //text-overflow: ellipsis;
+        font-size: 1.2rem;
+        margin-bottom: 5%;
+    }
 `
 
 const InfoImage = styled.img`

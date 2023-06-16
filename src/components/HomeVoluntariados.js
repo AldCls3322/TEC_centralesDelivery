@@ -38,7 +38,7 @@ const Container = styled.div`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
-    display: block  ;
+    display: block;
     width: 100%;
     height: 100vh;
     justify-content: center;
@@ -48,6 +48,10 @@ const Container = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        height: auto;
+        // overflow: scroll;
+    }
 `
 
 const TitleContainer = styled.div`
@@ -63,6 +67,9 @@ const TitleContainer = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        margin-bottom: 10%;
+    }
 `
 
 const ShortBar = styled.div`
@@ -77,6 +84,9 @@ const ShortBar = styled.div`
     background: ${({ theme }) => theme.color5};
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 2%;
+    }
 `
 
 const Title = styled.div`
@@ -91,6 +101,10 @@ const Title = styled.div`
     font-weight: 500;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        font-size: 1.7rem;
+        font-family: comfortaa;
+    }
 `
 
 const LongBar = styled.div`
@@ -104,6 +118,9 @@ const LongBar = styled.div`
     background: ${({ theme }) => theme.color5};
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 10%;
+    }
 `
 
 const InfoContainer = styled.div`
@@ -111,7 +128,7 @@ const InfoContainer = styled.div`
 
     /* Display & Box Model | Sizing */
     display: flex;
-    width: 90%;
+    width: 95%;
     height: 80vh;
     margin: auto;
 
@@ -119,6 +136,10 @@ const InfoContainer = styled.div`
     //background-color: black;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        display: block;
+        margin: 0;
+    }
 `
 
 const InfoDesc = styled.div`
@@ -135,6 +156,13 @@ const InfoDesc = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 3%;
+        margin-right: 0;
+    }
 `
 
 const InfoDescTitle = styled.div`
@@ -150,19 +178,29 @@ const InfoDescTitle = styled.div`
     font-weight: 600;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        font-size: 2rem;
+        text-align: center;
+    }
 `
 
 const InfoDescText = styled.div`
     /* Positioning */
 
     /* Display & Box Model | Sizing */
-    font-family: Sans-serif;
+    font-family: serif, Times;
     font-size: 1.5rem;
     text-align: justify;
 
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        //height: 30vh;
+        //overflow: scroll;
+        //text-overflow: ellipsis;
+        font-size: 1.2rem;
+    }
 `
 
 const InfoImage = styled.img`

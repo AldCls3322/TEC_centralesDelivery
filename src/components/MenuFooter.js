@@ -10,7 +10,7 @@ const MenuProductsCard = () => {
     //const cartCount = 0;
     const cartCount = useSelector(cartProducts).length;
     //
-    console.log(cartCount);
+    //console.log(cartCount);
     // try{
     //     const productsInCart = useSelector(cartProducts);
     //     const cartCount = productsInCart.length;
@@ -75,6 +75,11 @@ const ReturnButton = styled(Link)`
         filter: drop-shadow(0 0 1rem ${({ theme }) => theme.body});            /* FF~35 */
         filter: drop-shadow(0 0 0 1rem ${({ theme }) => theme.body});            /* MDN */
     }
+    @media screen and (max-width: 700px){
+        height: 50px;
+        width: 100px;
+        margin-left: 1%;
+    }
 `
 
 const CheckoutContainer = styled(Link)`
@@ -100,6 +105,11 @@ const CheckoutContainer = styled(Link)`
         filter: drop-shadow(0 0 1rem ${({ theme }) => theme.body});            /* FF~35 */
         filter: drop-shadow(0 0 0 1rem ${({ theme }) => theme.body});            /* MDN */
     }
+    @media screen and (max-width: 700px){
+        height: 50px;
+        width: 100px;
+        margin-right: 1%;
+    }
 `
 
 const CartIcon = styled(FaShoppingCart)`
@@ -112,9 +122,9 @@ const CartIcon = styled(FaShoppingCart)`
     font-size: 30px;
 
     /* Animations and Other */
-    // @media screen and (max-width: 400px) {
-    //     width: 100%;
-    // }
+    @media screen and (max-width: 700px){
+        padding-right: 2px;
+    }
 `
 
 const BubbleCount = styled.div`
@@ -137,7 +147,12 @@ const BubbleCount = styled.div`
     background-color: ${({ theme }) => theme.body};
 
     /* Animations and Other */
-    //className="rounded-full bg-yellow-400 inline-flex justify-center items-center w-full absolute -top-1 -right-1
+    @media screen and (max-width: 700px){
+        left: 50%;
+        top: 1px;
+        width: 25px;
+        height: 25px;
+    }
 `
 
 const CheckoutButton = styled.div`
@@ -148,4 +163,7 @@ const CheckoutButton = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        display: none;
+    }
 `

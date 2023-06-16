@@ -7,10 +7,12 @@ export const lightTheme = {
     colorActive: '#89634B',
     transpText: 'rgba(0,0,0,0.6)',
     lessTranspText: 'rgba(0,0,0,0.8)',
+    lightColor1: '#f1f6f9',
     lightColor2: '#f4f8fa',
     darkColor3: '#000e29',
     acceptColor: '#33ee77',
-    cancelColor: '#33ee77',
+    cancelColor: '#CF1F1F',
+    activeCancelColor: '#F62424',
     
     color1: "#2196F3", //Azul claro
     color2: "#0092DA", // Azul verdish claro
@@ -34,7 +36,8 @@ export const darkTheme = {
     lightColor2: '#f4f8fa',
     darkColor3: '#000e29',
     acceptColor: '#33ee77',
-    cancelColor: '#33ee77',
+    cancelColor: '#CF1F1F',
+    activeCancelColor: '#F62424',
     
     color1: "#2196F3",
     color2: "#0092DA",

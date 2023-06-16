@@ -12,7 +12,7 @@ const MenuTitle = () => {
   return (
     <Container>
       <ImgContainer>
-        <ImgLogo src='https://tecfood.tec.mx/sites/g/files/vgjovo1061/files/styles/de2e/public/2022-09/MTY-al-star-logo.jpeg?itok=mGIc2MM8'/>
+        <ImgLogo src={restaurant[0].Logo}/>
       </ImgContainer>
       <TitleContainer>
         <Title>{restaurant[0].Title}</Title>
@@ -49,6 +49,15 @@ const ImgContainer = styled.div`
     margin-bottom: 20px;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      background-size: fit;
+    }
 `
 
 const ImgLogo = styled.img`
@@ -59,6 +68,9 @@ const ImgLogo = styled.img`
   /* Color, Background & Text */
 
   /* Animations and Other */
+  @media screen and (max-width: 700px){ 
+    width: 90%;
+  }
 `
 
 const TitleContainer = styled.div`
@@ -98,4 +110,7 @@ const TitleBar = styled.div`
   background-color: ${({ theme }) => theme.color5};
 
   /* Animations and Other */
+  @media screen and (max-width: 700px){
+    width: 200px;
+  }
 `

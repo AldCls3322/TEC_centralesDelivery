@@ -9,14 +9,14 @@ export const ProductsSummaryCard = ({ product }) => {
     return (
         <Container>
             <ProductImgContainer>
-                <ProductImg src={ClascBrger} alt={product.name}/>
+                <ProductImg src={product.img}/>
             </ProductImgContainer>
             <ProductInfoContainer>
                 <ProductInfoTitle>{product.name}</ProductInfoTitle>
                 <ProductInfoDescription>{product.description}</ProductInfoDescription>
             </ProductInfoContainer>
             <ProductPriceQtContainer>
-                <Price>{product.price}</Price>
+                <Price>${product.price}.00</Price>
                 <QuantityContainer>
                     <LowerQuantity disabled={product.amount <= 0} onClick={() => dispatch(decrementProductAmount(product))}>-</LowerQuantity>
                     <QuantityText>{product.amount}</QuantityText>
@@ -32,7 +32,7 @@ const Container = styled.div`
 
     /* Display & Box Model | Sizing */
     display: flex;
-    width: 96%;
+    width: 94%;
     margin: 2%;
 
     /* Color, Background & Text */
@@ -54,10 +54,16 @@ const ProductImgContainer = styled.div`
     background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
 
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 70px;
+        height: 70px;
+    }
 `
 
 const ProductImg = styled.img`
@@ -82,6 +88,9 @@ const ProductInfoContainer = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        max-width: 60%;
+    }
 `
 
 const ProductInfoTitle = styled.div`
@@ -100,6 +109,12 @@ const ProductInfoTitle = styled.div`
     font-weight: bold;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        padding-left: 0;
+        height: 100%;
+        overflow: scroll;
+        font-size: 1.2rem;
+    }
 `
 
 const ProductInfoDescription = styled.div`
@@ -119,6 +134,9 @@ const ProductInfoDescription = styled.div`
     font-size: 1rem;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        display: none;  
+    }
 `
 
 const ProductPriceQtContainer = styled.div`
@@ -145,6 +163,9 @@ const Price = styled.div`
     font-size: 2.5rem;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        font-size: 1.5rem;
+    }
 `
 
 const QuantityContainer = styled.div`

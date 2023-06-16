@@ -70,6 +70,9 @@ const Container = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        margin-top: 50px;
+    }
 `
 
 const SectionTitleCOntainer = styled.div`
@@ -84,6 +87,9 @@ const SectionTitleCOntainer = styled.div`
     /* Color, Background & Text */
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        margin-bottom: 10px;
+    }
 `
 
 const ShortBar = styled.div`
@@ -98,6 +104,9 @@ const ShortBar = styled.div`
     background: ${({ theme }) => theme.color5};
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 5%;
+    }
 `
 
 const Title = styled.div`
@@ -113,6 +122,9 @@ const Title = styled.div`
     font-family: serif, verdana;
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        font-size: 2rem;
+    }
 `
 
 const LongBar = styled.div`
@@ -126,4 +138,7 @@ const LongBar = styled.div`
     background: ${({ theme }) => theme.color5};
 
     /* Animations and Other */
+    @media screen and (max-width: 700px){
+        width: 60%;
+    }
 `
